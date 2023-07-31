@@ -1,0 +1,26 @@
+name: model-wine-quality
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: iterative/setup-cml@v1
+    - env:
+        REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Can use the default token for most functions
+      run: |
+        # Install Packages
+        pip install -r requirements.txt
+        
+        # Train model
+        python train.py
+
+        # Create report
+        echo 'My first CML report' > report.md
+        
+        # Add plot
+        echo '![](./feature_importance.png)' >> report.md
+        
+        # Publish report
+        cml comment create --publish report.md
+
