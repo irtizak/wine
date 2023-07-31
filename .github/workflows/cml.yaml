@@ -10,6 +10,8 @@ jobs:
     - env:
         REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Can use the default token for most functions
       run: |
+        # Your ML workflow goes here
+        pip install -r requirements.txt
         python train.py
 
         echo 'My first CML report' > report.md
