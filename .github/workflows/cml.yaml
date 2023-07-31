@@ -10,10 +10,10 @@ jobs:
     - env:
         REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Can use the default token for most functions
       run: |
-        python train.py --output plot.png
+        python train.py
 
         echo 'My first CML report' > report.md
-        echo '![](./plot.png)' >> report.md
+        echo '![](./feature_importance.png)' >> report.md
         cml comment create --publish report.md
         #     steps:
         #       - uses: actions/checkout@v3
