@@ -3,7 +3,6 @@ on: [push]
 jobs:
   run:
     runs-on: ubuntu-latest
-    #     container: docker://dvcorg/cml-py3:latest
     steps:
     - uses: actions/checkout@v2
     - uses: iterative/setup-cml@v1
@@ -17,26 +16,4 @@ jobs:
         echo 'My first CML report' > report.md
         echo '![](./feature_importance.png)' >> report.md
         cml comment create --publish report.md
-        #     steps:
-        #       - uses: actions/checkout@v3
-        #       - uses: iterative/setup-cml@v1
-        #       - name: Train Model
-        #         env:
-        #           repo_token: $({ secrets.GITHUB_TOKEN })
-        #         run: |
-
-        #           # Your ML workflow goes here
-        #           pip install -r requirements.txt
-        #           python train.py
-
-        #           # echo "## Model Metrics" > report.md
-        #           cat metrics.txt >> report.md
-
-        #           # echo "## Data viz" >> report.md
-        #           # cml-publish feature_importance.png --md >> report.md (Error)
-        #           # cml-publish residuals.png --md >> report.md (Error)
-        #           echo "![](./feature_importance.png)" >> report.md
-        #           echo "![](./residuals.png)" >> report.md
-        #           # cml-send-comment report.md (Error)
-        #           cml comment create report.md
 
